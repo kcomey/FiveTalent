@@ -1,0 +1,25 @@
+{
+  "name": "fivetalent",
+  "version": "1.0.0",
+  "description": "Basic realtor site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kcomey/FiveTalent.git"
+  },
+  "author": "Kendall Comey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcomey/FiveTalent/issues"
+  },
+  "homepage": "https://github.com/kcomey/FiveTalent#readme",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "express": "^4.12.4",
+    "mongo": "^0.1.0",
+    "mongojs": "^1.0.1"
+  }
+}
