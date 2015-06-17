@@ -12,13 +12,18 @@ app.use(bodyParser.json());
 
 app.get('/mls', function(req, res) {
   db.mls.find(function(err, docs) {
-    console.log(docs);
+    res.json(docs);
+  })
+});
+
+app.get('/editmls/:id', function(req, res) {
+  console.log('server line 20' + id);
+  db.mls.findOne({_id: mongojs.ObjectId(id)},function(err, docs) {
     res.json(docs);
   })
 });
 
 app.post('/addmls', function(req, res) {
-  console.log('server line 21 ' + req.body.street1);
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   db.mls.insert(req.body, function(err, docs) {
     res.json(docs);
@@ -27,7 +32,6 @@ app.post('/addmls', function(req, res) {
 
 app.put('/updatemls/:id', function(req, res) {
   var id = req.params.id;
-  console.log(req.body.author);
   db.mls.findAndModify({query: {_id: mongojs.ObjectId(id)},
     update: {$set:{note: req.body.note, author: req.body.author}},
     new: true}, function(err, docs) {
@@ -37,7 +41,6 @@ app.put('/updatemls/:id', function(req, res) {
 
 app.delete('/deletemls/:id', function(req, res) {
   var id = req.params.id;
-  console.log(id);
   db.mls.remove({_id: mongojs.ObjectId(id)}, function(err, docs) {
     res.json(docs);
   });

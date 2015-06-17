@@ -8,11 +8,11 @@
 </head>
 <body>
   <div class="container" data-ng-controller="AppCtrl">
-    <h2>{{ greet }}</h2>
+    <h2>{{ greet }} <img src="images/house2.png" /></h2>
     <!-- setting up a nested table -->
     <table class="table">
       <tr>
-        <td>
+        <td width='50%'>
           <table class="table">
             <tr>
               <td>MLS #</td>
@@ -81,19 +81,15 @@
           </table>
         </td>
 
-        <td>
+        <td width='50%'>
           <table class="table">
-            <tr>
-              <td>Put the list of properties to choose one for editing here,
-              maybe a dropdown? Or else a list with a checkbox to delete?
-              </td><td></td>
-            </tr>
-            <tr data-ng-repeat="note in notelist">
-              <td>{{ note.note }}</td>
-              <td>{{ note.author }}</td>
-              <td><button class="btn btn-danger" data-ng-click="remove(note._id)">Remove</button></td>
-              <td><button class="btn btn-warning" data-ng-click="edit(note._id)">
-            Edit</button></td>
+            <tr><th>MLS#</th><th>Sales Price</th></tr>
+            <tr data-ng-repeat="property in mlslist">
+              <td>{{ property.mlsNum }}</td>
+              <td>{{ property.salesPrice }}</td>
+              <td><button class="btn btn-danger" data-ng-click="remove(property._id)">Remove</button></td>
+              <td><button class="btn btn-warning" data-ng-click="edit(property._id)">
+              Edit</button></td>
             </tr>
           </table>
         </td>

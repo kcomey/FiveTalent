@@ -11,17 +11,16 @@ myApp.controller('AppCtrl', ['$scope', '$http',
 
   $scope.addListing = function() {
     $http.post('/addmls', $scope.listing).success(function(response) {
-      console.log(response);
       $scope.mlslist.push(response);
       $scope.listing = "";
     });
   };
 
   $scope.remove = function(id) {
-    $http.delete('/api/notes/' + id).success(function(response) {
-      for(var i = 0; i < $scope.notelist.length; i++) {
-        if($scope.notelist[i]._id === id) {
-          $scope.notelist.splice(i, 1);
+    $http.delete('/deletemls/' + id).success(function(response) {
+      for(var i = 0; i < $scope.mlslist.length; i++) {
+        if($scope.mlslist[i]._id === id) {
+          $scope.mlslist.splice(i, 1);
           break;
         }
       }
@@ -29,13 +28,13 @@ myApp.controller('AppCtrl', ['$scope', '$http',
   };
 
   $scope.edit = function(id) {
-    $http.get('/api/notes/' + id).success(function(response) {
-      $scope.note = response;
+    $http.get('/editmls/' + id).success(function(response) {
+      $scope.listing = response;
     });
   };
 
   $scope.update = function() {
-    $http.put('/api/notes/' + $scope.note._id, $scope.note)
+    $http.put('/updatemls/' + $scope.note._id, $scope.note)
       .success(function(response) {
       for(var i = 0; i < $scope.notelist.length; i++) {
         if($scope.notelist[i]._id === response._id) {
