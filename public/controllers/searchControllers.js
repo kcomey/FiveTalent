@@ -24,6 +24,7 @@ searchController.controller('searchController', ['$scope', '$http',
       if (numResults > 0) {
         $scope.ifResults = true;
         $scope.result = 'Your search returned ' + numResults + ' results!'
+        $scope.listing = "";
       }
       else {
         $scope.ifResults = false;
