@@ -18,9 +18,15 @@ searchController.controller('searchController', ['$scope', '$http',
       numResults = response.length;
       $scope.searchResults = response;
 
-      if (numResults > 0) {
+      if (numResults > 1) {
         $scope.ifResults = true;
         $scope.result = 'Your search returned ' + numResults + ' results!'
+        $scope.listing = "";
+      }
+      else if (numResults === 1) {
+        $scope.ifResults = true;
+        $scope.result = 'Your search returned 1 result!'
+        $scope.listing = "";
       }
       else {
         $scope.ifResults = false;
