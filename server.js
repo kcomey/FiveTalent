@@ -45,7 +45,6 @@ app.put('/updatemls/:id', function(req, res) {
     update: req.body,
     new: true
     }, function(err, docs) {
-      console.log(docs);
       res.json(docs);
   });
 });

@@ -11,15 +11,11 @@ userController.controller('userController', ['$scope', '$http',
     });
 
   $scope.addListing = function() {
-    $http.get('/getmls').success(function(mlsNum) {
-      $scope.listing = { mlsNum: mlsNum };
-
-      $http.post('/addmls', $scope.listing).success(function(response) {
-        $scope.mlslist.push(response);
-        $scope.listing = "";
-        $scope.showMLSMessage = true;
-        $scope.showMLS = false;
-      });
+    $http.post('/addmls', $scope.listing).success(function(response) {
+      $scope.mlslist.push(response);
+      $scope.listing = "";
+      $scope.showMLSMessage = true;
+      $scope.showMLS = false;
     });
   };
 
