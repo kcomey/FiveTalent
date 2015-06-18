@@ -1,5 +1,6 @@
 var searchController = angular.module('searchController', []);
 
+// set up some initial state
 searchController.controller('searchController', ['$scope', '$http',
   function ($scope, $http) {
     $scope.greet = "Search the Realtor App";
@@ -9,10 +10,12 @@ searchController.controller('searchController', ['$scope', '$http',
     $scope.searchResults = "";
     var numResults = 0;
 
+  // if the Clear button is clicked, just clear the state
   $scope.deselect = function() {
     $scope.listing = "";
   };
 
+  // these are the results from the search
   $scope.search = function() {
     $http.post('/search', $scope.listing).success(function(response) {
       numResults = response.length;
