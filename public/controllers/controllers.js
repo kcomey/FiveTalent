@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', []);
+var userController = angular.module('userController', []);
 
-myApp.controller('AppCtrl', ['$scope', '$http',
+userController.controller('userController', ['$scope', '$http',
   function ($scope, $http) {
     $scope.greet = "Kendall's Realtor App";
 

@@ -4,7 +4,8 @@
   "description": "Basic realtor site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify public/controllers/app.js -o public/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   "homepage": "https://github.com/kcomey/FiveTalent#readme",
   "dependencies": {
     "body-parser": "^1.13.1",
+    "browserify": "^10.2.4",
     "express": "^4.12.4",
+    "jquery": "^2.1.4",
     "mongo": "^0.1.0",
     "mongojs": "^1.0.1"
   }
