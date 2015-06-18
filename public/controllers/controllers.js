@@ -30,6 +30,7 @@ userController.controller('userController', ['$scope', '$http',
   $scope.edit = function(id) {
     $http.get('/editmls/' + id).success(function(response) {
       $scope.listing = response;
+      console.log(response);
     });
   };
 
@@ -45,10 +46,6 @@ userController.controller('userController', ['$scope', '$http',
         }
       }
     });
-  };
-
-  $scope.deselect = function() {
-    $scope.note = "";
   };
 
 }]);

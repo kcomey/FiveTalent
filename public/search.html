@@ -9,13 +9,18 @@
         <td><input class="form-control" data-ng-model="listing.mlsNum"></td>
       </tr>
       <tr>
-        <td>Date Listed</td>
+        <td>Date Listed (mm/dd/yy)</td>
         <td><input class="form-control" data-ng-model="listing.dateListed">
         </td>
       </tr>
       <tr>
-        <td>City / State</td>
-        <td><input class="form-control" data-ng-model="listing.cityState">
+        <td>City</td>
+        <td><input class="form-control" data-ng-model="listing.city">
+        </td>
+      </tr>
+       <tr>
+        <td>State</td>
+        <td><input class="form-control" data-ng-model="listing.state">
         </td>
       </tr>
       <tr>
@@ -41,22 +46,23 @@
         <td></td>
         <td>
           <button class="btn btn-primary" data-ng-click="search()">
-          Search</button></td>
+          Search</button>
+          <button class="btn btn-info"
+            data-ng-click="deselect()">Clear</button></td>
       </tr>
     </table>
   </td>
   <td>
-        <table class="table">
-            <tr><td colspan='2'>{{ greet }}</td></tr>
+    <h4>{{ result }}</h4>
+        <div ng-show="ifResults">
+          <table class="table">
             <tr><th>MLS#</th><th>Sales Price</th></tr>
-            <tr data-ng-repeat="property in mlslist">
+            <tr data-ng-repeat="property in searchResults">
               <td>{{ property.mlsNum }}</td>
               <td>{{ property.salesPrice }}</td>
-              <td><button class="btn btn-danger" data-ng-click="remove(property._id)">Remove</button></td>
-              <td><button class="btn btn-warning" data-ng-click="edit(property._id)">
-              Edit</button></td>
             </tr>
           </table>
+        </div>
   </td>
 </tr>
 </table>

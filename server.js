@@ -17,25 +17,39 @@ app.get('/mls', function(req, res) {
 });
 
 app.get('/editmls/:id', function(req, res) {
-  console.log('server line 20' + id);
+  var id = req.params.id;
   db.mls.findOne({_id: mongojs.ObjectId(id)},function(err, docs) {
     res.json(docs);
   })
 });
 
 app.post('/search', function(req, res) {
-  console.log(req.body);
-  var searchString;
-  // create a search string based on the user's input
-  //{ price: { $ne: 1.99 } }, { price: { $exists: true } }
-  // remove the last comma
-  searchString = [
-    { mlsNum: '456' },
-    { zipcode: '83001' }
-  ];
-  //{ mlsNum: '456' }, { zipcode: '83001' }";
-  //searchString += ', ';
-  //searchString += { zipcode: '83001' };
+  var searchString = [];
+
+  if (req.body.mlsNum) {
+    searchString.push({ mlsNum: req.body.mlsNum });
+  }
+  if (req.body.dateListed) {
+    searchString.push({ dateListed: req.body.dateListed });
+  }
+  if (req.body.city) {
+    searchString.push({ city: req.body.city });
+  }
+  if (req.body.state) {
+    searchString.push({ state: req.body.state });
+  }
+  if (req.body.zipcode) {
+    searchString.push({ zipcode: req.body.zipcode });
+  }
+  if (req.body.bedrooms) {
+    searchString.push({ bedrooms: req.body.bedrooms });
+  }
+  if (req.body.bathrooms) {
+    searchString.push({ bathrooms: req.body.bathrooms });
+  }
+  if (req.body.squareFeet) {
+    searchString.push({ squareFeet: req.body.squareFeet });
+  }
 
   db.mls.find({ $and: searchString },
     function(err, docs){
@@ -69,3 +83,11 @@ app.delete('/deletemls/:id', function(req, res) {
 app.listen(process.env.PORT || 3000, function() {
   console.log('server started');
 });
+
+
+   // { bedrooms: req.body.bedrooms },
+    //{ bathrooms: req.body.bathrooms },
+    //{ squareFeet: req.body.squareFeet}
+    //{ dateListed: req.body.dateListed },
+    //{ city: req.body.city },
+    //{ state: req.body.state },
