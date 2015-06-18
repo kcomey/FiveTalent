@@ -1,14 +1,16 @@
-
-
-    <h2>{{ greet }} <img src="images/house2.png" /></h2>
+  <h2>{{ greet }} <img src="images/house2.png" /></h2>
     <!-- setting up a nested table -->
     <table class="table">
-      <tr>
+      <tr valign=top>
         <td width='50%'>
           <table>
             <tr>
               <td>MLS #</td>
-              <td><input class="form-control" data-ng-model="listing.mlsNum"></td>
+              <td>
+                <div ng-show="showMLS">{{ listing.mlsNum }}</div>
+                <div ng-show="showMLSMessage">(will be auto-generated)
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Street 1</td>
@@ -64,23 +66,28 @@
               <td><textarea class="form-control" data-ng-model="listing.description">
               </textarea></td>
             </tr>
+            <tr><td>&nbsp;</td></tr>
             <tr>
+              <td></td>
               <td>
+
                 <button class="btn btn-primary" data-ng-click="addListing()">
-                Add Listing</button></td>
-                <td></td>
+                Add Listing</button>
+
+                <button class="btn btn-info" data-ng-click="update()">
+                Update</button></td>
             </tr>
           </table>
         </td>
 
         <td width='50%'>
-          <table class="table">
-            <tr><th>MLS#</th><th>Sales Price</th></tr>
+          <table class="table table-striped">
+            <tr><th>MLS#</th><th>Sales Price</th><th></th></tr>
             <tr data-ng-repeat="property in mlslist">
               <td>{{ property.mlsNum }}</td>
               <td>{{ property.salesPrice }}</td>
-              <td><button class="btn btn-danger" data-ng-click="remove(property._id)">Remove</button></td>
-              <td><button class="btn btn-warning" data-ng-click="edit(property._id)">
+              <td><button class="btn btn-danger" data-ng-click="remove(property._id)">Remove</button>&nbsp;
+              <button class="btn btn-warning" data-ng-click="edit(property._id)">
               Edit</button></td>
             </tr>
           </table>

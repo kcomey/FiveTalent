@@ -50,6 +50,8 @@ userController.controller('userController', ['$scope', '$http',
           $scope.mlslist[i].mlsNum = response.mlsNum;
           $scope.mlslist[i].salesPrice = response.salesPrice;
           $scope.listing = "";
+          $scope.showMLSMessage = true;
+          $scope.showMLS = false;
           break;
         }
       }
