@@ -23,6 +23,26 @@ app.get('/editmls/:id', function(req, res) {
   })
 });
 
+app.post('/search', function(req, res) {
+  console.log(req.body);
+  var searchString;
+  // create a search string based on the user's input
+  //{ price: { $ne: 1.99 } }, { price: { $exists: true } }
+  // remove the last comma
+  searchString = [
+    { mlsNum: '456' },
+    { zipcode: '83001' }
+  ];
+  //{ mlsNum: '456' }, { zipcode: '83001' }";
+  //searchString += ', ';
+  //searchString += { zipcode: '83001' };
+
+  db.mls.find({ $and: searchString },
+    function(err, docs){
+      res.json(docs);
+  })
+});
+
 app.post('/addmls', function(req, res) {
   res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   db.mls.insert(req.body, function(err, docs) {
